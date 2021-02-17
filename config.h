@@ -5,9 +5,15 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "mono:pixelsize=14:antialias=true:autohint=true";
-static char *font2[] = { "JoyPixels:pixelsize=10:antialias=true:autohint=true" };
-static int borderpx = 2;
+//static char *font = "Termsyn:size=12:antialias=true:autohint=true";
+static char *font = "Iosevka:size=10:antialias=true:autohint=true";
+//static char *font = "CtrlD:size=13:antialias=true:autohint=true";
+static char *font2[] = { 
+	"JoyPixels:pixelsize=10:antialias=true:autohint=true" ,
+	"FontAwesome:pixelsize=10:antialias=true:autohint=true" 
+};
+
+static int borderpx = 25;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -72,9 +78,7 @@ static unsigned int cursorthickness = 2;
 /*
  * 1: render most of the lines/blocks characters without using the font for
  *    perfect alignment between cells (U2500 - U259F except dashes/diagonals).
- *    Bold affects lines thickness if boxdraw_bold is not 0. Italic is ignored.
- * 0: disable (render all U25XX glyphs normally from the font).
- */
+ *    Bold affects lines thickness if boxdraw_bold is not 0. Italic is ignored.  * 0: disable (render all U25XX glyphs normally from the font).  */
 const int boxdraw = 1;
 const int boxdraw_bold = 1;
 
@@ -108,43 +112,98 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.8;
+float alpha = 1;
+
+
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	"#282828", /* hard contrast: #1d2021 / soft contrast: #32302f */
-	"#cc241d",
-	"#98971a",
-	"#d79921",
-	"#458588",
-	"#b16286",
-	"#689d6a",
-	"#a89984",
-	"#928374",
-	"#fb4934",
-	"#b8bb26",
-	"#fabd2f",
-	"#83a598",
-	"#d3869b",
-	"#8ec07c",
-	"#ebdbb2",
-	[255] = 0,
-	/* more colors can be added after 255 to use with DefaultXX */
-	"#add8e6", /* 256 -> cursor */
-	"#555555", /* 257 -> rev cursor*/
-	"#282828", /* 258 -> bg */
-	"#ebdbb2", /* 259 -> fg */
-};
+#if 0
+    //"#073642",
+    "#161b1f",
+    "#eb606b",
+    "#c3e88d",
+    "#f7eb95",
+    "#80cbc4",
+    "#ff2490",
+    "#aeddff",
+    "#ffffff",
 
+    /* 8 bright colors */
+    "#ff002b",
+    "#eb606b",
+    "#c3e88d",
+    "#f7eb95",
+    "#7dc6bf",
+    "#6c71c4",
+    "#35434d",
+    "#ffffff",
+
+    [255] = 0,
+
+    /* more colors can be added after 255 to use with DefaultXX */
+    "#cccccc",
+    "#c4c7d1",
+    "#263238",
+#endif
+
+#if 0
+    "#5c5c5c",
+    "#d77f7a",
+    "#b5bc6d",
+    "#877f69",
+    "#89abba",
+    "#cca8bb",
+    "#a2ccca",
+    "#707070",
+
+    "#505050",
+    "#d77f7a",
+    "#c6ca67",
+    "#f6d16a",
+    "#4c5359",
+    "#99828e",
+    "#a2ccca",
+    "#5e5e5e",
+
+#endif
+
+    "#707070",
+    "#b2908a",
+    "#b5bc6d",
+    "#877f69",
+    "#81a2be",
+    "#cca8bb",
+    "#9FC2C2",
+    "#b0b0b0",
+
+    "#494a4c",
+    "#785A5A",
+    "#807E60",
+    "#DBBD7D",
+    "#4c5359",
+    "#8C7681",
+    "#608985",
+    "#999999",
+
+
+    [255] = 0,
+    // fg
+    "#f0f0f0",
+    // bg
+    "#1a1a1a",
+
+};
 
 /*
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 259;
-unsigned int defaultbg = 258;
+unsigned int defaultfg = 256;
+unsigned int defaultbg = 257;
 unsigned int defaultcs = 256;
 unsigned int defaultrcs = 257;
+
 
 /*
  * Default shape of cursor
